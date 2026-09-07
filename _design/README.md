@@ -72,12 +72,12 @@ All six pages render at a max content width with horizontal padding (`88px` in D
 
 - Hero: name (large display), tagline, short bio, three CTAs (View research / Download CV / Email), and a 6-cell stats strip beneath.
 - In Direction A: the **Aperture mark** sits in the upper-right of the hero, 280×280px, absolutely positioned.
-- In Direction B: a magazine-style two-column hero (text + large "FIG. 01" plate), followed by a "Featured · three manuscripts at Nature-family journals" three-column block.
+- In Direction B: a magazine-style two-column hero (text + large "FIG. 01" plate), followed by a featured Nature-family manuscript-status block.
 
 ### 2. Research
 
 - Headline + intro paragraph.
-- "Nature-family submissions" — list of three manuscripts under review (data: `CV.natureSubmissions`).
+- "Nature-family submissions" — status list for three manuscripts under review and two being prepared for submission (data: `CV.natureSubmissions`).
 - "Research areas" — 2×2 grid of four focus areas (data: `CV.researchAreas`).
 - "In preparation" — list of upcoming papers (data: `CV.inPrep`).
 - Direction B also features the current position bulletted out, boxed.
@@ -85,7 +85,7 @@ All six pages render at a max content width with horizontal padding (`88px` in D
 ### 3. Publications
 
 - Counter header: `19 papers · 1 book chapter · 425+ citations`.
-- Publications grouped by topic, sourced from `CV.publications` (an object of `label → papers[]`). Groups: *Manuscripts Under Review at Nature-Family Journals*, *Cancer and Biomedical AI*, *Neurological Disorder Diagnosis & Medical Imaging*, *Plant Phenomics & Agricultural AI*, *Software Engineering & Methodological CS*, *Book Chapter*.
+- Publications grouped by topic, sourced from `CV.publications` (an object of `label → papers[]`). Groups: *Current Nature-Family Manuscript Status*, *Cancer and Biomedical AI*, *Neurological Disorder Diagnosis & Medical Imaging*, *Plant Phenomics & Agricultural AI*, *Software Engineering & Methodological CS*, *Book Chapter*.
 - Each paper: authors (with `Mostafa` bolded), title, venue (italic), year, citation count badge, impact factor badge, optional note badge.
 
 ### 4. Teaching
@@ -93,7 +93,7 @@ All six pages render at a max content width with horizontal padding (`88px` in D
 - Headline.
 - "Courses & lectureship" (4 entries: `CV.teaching.lecturer`).
 - "Teaching assistantships" (6 entries: `CV.teaching.ta`).
-- "Mentoring" (7 entries: `CV.teaching.mentoring`).
+- "Mentoring" (11 entries: `CV.teaching.mentoring`).
 
 ### 5. CV
 

@@ -11,32 +11,44 @@ window.CV = {
   shortBio: "I develop deep learning frameworks that translate biological signals — cfRNA, multi-omics, networks — into images so vision foundation models can see them. My current work spans liquid biopsy for early cancer detection, multimodal AI for imaging-genomics integration, and graph foundation models for biological networks.",
 
   highlights: [
-    { label: "Manuscripts under review", value: "3", note: "Nature, Nat Biomed Eng, Nat Comp Sci" },
+    { label: "Manuscripts under review", value: "3", note: "Nature Communications · Nature Biomedical Engineering · Nature Computational Science" },
     { label: "Stanford Cancer Institute Innovation Award", value: "$75K", note: "December 2025" },
     { label: "Peer-reviewed publications", value: "19", note: "+ 1 book chapter · 560+ citations" },
     { label: "Patents filed (Stanford OTL)", value: "2", note: "Graph foundation models · Tabular-to-image" },
     { label: "Research grants secured", value: "$95K", note: "Plus CAD 168.5K in scholarships" },
-    { label: "Years teaching & mentoring", value: "6", note: "7 TAships · 7 trainees supervised" },
+    { label: "Years teaching & mentoring", value: "6", note: "7 TAships · 11 trainees mentored" },
   ],
 
   natureSubmissions: [
     {
-      title: "Transformation of Biological Networks into Images via Semantic Cartography for Visual Interpretation and Scalable Deep Analysis",
-      venue: "Nature Computational Science",
-      status: "Under revision (first-round peer review)",
-      preprint: "arxiv.org/abs/2512.07040",
+      title: "Vision-Based Deep Learning of Biomedical Tabular Data via Self-Supervised Cartographic Representation",
+      venue: "Nature Communications",
+      status: "Under review",
+      preprint: "arxiv.org/abs/2603.22675",
     },
     {
       title: "Language-Encoded Structural Topology Enables Generalizable Foundation Models for Graph-Structured Data",
-      venue: "Nature",
-      status: "Under editorial review",
+      venue: "Nature Computational Science",
+      status: "Under review",
       preprint: "arxiv.org/abs/2604.06391",
     },
     {
-      title: "Vision-based Deep Learning Analysis of Unordered Biomedical Tabular Datasets via Optimal Spatial Cartography",
+      title: "Transformation of Biological Networks into Images via Semantic Cartography for Visual Interpretation and Scalable Deep Analysis",
       venue: "Nature Biomedical Engineering",
-      status: "Under external peer review",
-      preprint: "arxiv.org/abs/2603.22675",
+      status: "Under review",
+      preprint: "arxiv.org/abs/2512.07040",
+    },
+    {
+      title: "Knowledge Graph Modulated Deep Learning for Limited-Sample Clinical Data Analysis",
+      venue: "Nature Biomedical Engineering",
+      status: "Preparing for submission",
+      preprint: "arxiv.org/abs/2605.24162",
+    },
+    {
+      title: "A Vision Foundation Model for Single-Cell Biology via Spatial Gene Cartography",
+      venue: "Nature",
+      status: "Preparing for submission",
+      preprint: "arxiv.org/abs/2607.14163",
     },
   ],
 
@@ -102,10 +114,12 @@ window.CV = {
   ],
 
   publications: {
-    "Manuscripts Under Review at Nature-Family Journals": [
-      { authors: "Mostafa S, Xing L, Islam MT", title: "Transformation of Biological Networks into Images via Semantic Cartography for Visual Interpretation and Scalable Deep Analysis.", venue: "Nature Computational Science", note: "Under revision after first-round peer review", year: "2026" },
-      { authors: "Mostafa S, Xing L, Islam MT", title: "Language-Encoded Structural Topology Enables Generalizable Foundation Models for Graph-Structured Data.", venue: "Nature", note: "Under editorial review", year: "2026" },
-      { authors: "Mostafa S, Massoud TF, Diehn M, Alizadeh AA, Xing L, Islam MT", title: "Vision-based Deep Learning Analysis of Unordered Biomedical Tabular Datasets via Optimal Spatial Cartography.", venue: "Nature Biomedical Engineering", note: "Under external peer review", year: "2026" },
+    "Current Nature-Family Manuscript Status": [
+      { authors: "Mostafa S, Jiang Y, Zou J, Massoud TF, Alizadeh AA, Diehn M, Xing L, Islam MT", title: "Vision-Based Deep Learning of Biomedical Tabular Data via Self-Supervised Cartographic Representation.", venue: "Nature Communications", note: "Under review", year: "2026" },
+      { authors: "Mostafa S, Zou J, Alizadeh AA, Diehn M, Xing L, Islam MT", title: "Language-Encoded Structural Topology Enables Generalizable Foundation Models for Graph-Structured Data.", venue: "Nature Computational Science", note: "Under review", year: "2026" },
+      { authors: "Mostafa S, Diehn M, Alizadeh AA, Xing L, Islam MT", title: "Transformation of Biological Networks into Images via Semantic Cartography for Visual Interpretation and Scalable Deep Analysis.", venue: "Nature Biomedical Engineering", note: "Under review", year: "2026" },
+      { authors: "Xue Y, Mostafa S, Zou J, Liao J, Diehn M, Alizadeh AA, Xing L, Islam MT", title: "Knowledge Graph Modulated Deep Learning for Limited-Sample Clinical Data Analysis.", venue: "Nature Biomedical Engineering", note: "Preparing for submission", year: "2026" },
+      { authors: "Yesiloglu R, Mostafa S, Zou J, Alizadeh A, Wu J, Xing L, Adeli E, Islam MT", title: "A Vision Foundation Model for Single-Cell Biology via Spatial Gene Cartography.", venue: "Nature", note: "Preparing for submission", year: "2026" },
     ],
     "Cancer and Biomedical AI": [
       { authors: "Rahman A, Rahman A, Mostafa S, Islam MT", title: "Cross-Cancer Computational Framework for Immune-Dysregulated Ecosystem Discovery and Therapeutic Prioritization.", venue: "Proc. IEEE CBMS", year: "2026" },
@@ -192,7 +206,10 @@ window.CV = {
       { name: "Tracy Xue", level: "Asst. Clinical Research Coordinator", where: "Stanford School of Medicine", advisor: "Md. Tauhidul Islam" },
       { name: "Ariana Rahman", level: "Undergraduate", where: "Stanford School of Medicine", advisor: "Md. Tauhidul Islam" },
       { name: "Arman Heydari", level: "Master's Student", where: "University of Saskatchewan", advisor: "Debajyoti Mondal" },
-      { name: "Alexander", level: "Research Mentee", where: "Current mentoring", advisor: "Research guidance and project development" },
+      { name: "Alexander Rahman", level: "Research Mentee", where: "Current mentoring", advisor: "Research guidance and project development" },
+      { name: "Yuwei Xue", level: "Research Mentee", where: "Stanford School of Medicine", advisor: "Knowledge-graph learning and clinical AI" },
+      { name: "Sayeed Sajjad Razin", level: "MSc Student", where: "Bangladesh University of Engineering and Technology (BUET)", advisor: "Research mentoring and project development" },
+      { name: "Md. Tazuddin Ahmed", level: "MSc Student", where: "Bangladesh University of Engineering and Technology (BUET)", advisor: "Research mentoring and project development" },
       { name: "Mehdi Khalaj", level: "Undergraduate", where: "University of Saskatchewan", advisor: "Ian Stavness" },
       { name: "Shagufta Zahid", level: "Undergraduate", where: "Bangladesh University", advisor: "Sakib Mostafa" },
       { name: "Bipul Dutta", level: "Undergraduate", where: "Bangladesh University", advisor: "Sakib Mostafa" },
@@ -208,7 +225,6 @@ window.CV = {
     { name: "Ash A. Alizadeh", role: "Moghadam Family Professor of Medicine, Oncology, and Hematology", note: "Pioneering work on ctDNA and cancer molecular profiling." },
     { name: "Tarik F. Massoud", role: "Professor of Neuroradiology and Molecular Imaging", note: "Molecular and translational imaging." },
     { name: "Joseph Liao", role: "Professor of Urology", note: "Clinical knowledge-graph collaborator." },
-    { name: "Yuwei Xue", role: "Research collaborator", note: "Knowledge-graph learning." },
   ],
 
   collabClusters: [
@@ -276,10 +292,10 @@ window.CV = {
   },
 
   media: [
-    { headline: "Diving into deep learning: USask research", outlet: "USask News", year: "2022" },
-    { headline: "Unpacking the black box of AI: Would you trust AI with your cancer diagnosis?", outlet: "USask College of Arts & Science News", year: "2025" },
-    { headline: "This U of S grad wants to ensure you can trust AI with your cancer diagnosis", outlet: "The Morning Edition Saskatchewan, CBC Radio", year: "October 2025" },
-    { headline: "U of S grad ensures trust in AI with cancer diagnosis", outlet: "The Saskatoon Morning, CBC Radio One", year: "October 2025" },
+    { headline: "Unpacking the black box of AI", outlet: "College of Arts and Science, University of Saskatchewan", year: "October 2025", format: "Alumni profile", description: "Explainable AI and interpretable cancer-detection models at Stanford.", url: "https://artsandscience.usask.ca/news/articles/11128/Unpacking_the_black_box_of_AI" },
+    { headline: "Multimodal AI for cancer research and medicine", outlet: "CBC Canada", year: "2025", format: "Video interview", description: "Combining imaging, genomic, and clinical information for interpretable cancer analysis and precision medicine.", url: "https://www.cbc.ca/player/play/video/9.6948775" },
+    { headline: "This U of S grad wants to ensure you can trust AI", outlet: "The Morning Edition — Saskatchewan, CBC Radio", year: "October 2025", format: "Radio interview", description: "Why medical AI must be understandable before it can be trusted in cancer diagnosis.", url: "https://www.cbc.ca/listen/live-radio/1-66-the-morning-edition-sask/clip/16178291-this-u-s-grad-wants-ensure-trust-ai" },
+    { headline: "Diving into deep learning: USask research", outlet: "University of Saskatchewan News", year: "February 2022", format: "Research feature", description: "Explainable deep learning for plant phenotyping, food security, and other high-stakes applications.", url: "https://news.usask.ca/articles/research/2022/research-diving-into-deep-learning-usask-research.php" },
   ],
 
   references: [

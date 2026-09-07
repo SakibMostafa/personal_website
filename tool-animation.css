@@ -7,25 +7,25 @@
   max-width: 100%;
   margin: -8px auto 54px;
   overflow: hidden;
-  border: 1px solid rgba(23,32,42,.17);
-  border-radius: 16px;
-  background: rgba(255,253,249,.92);
-  box-shadow: 0 28px 78px rgba(30,38,42,.14);
+  border: 1px solid rgba(16,37,53,.18);
+  border-radius: 8px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 24px 64px rgba(16,37,53,.14);
 }
 .hero-tools::before {
   content: '';
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(rgba(23,32,42,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(23,32,42,.03) 1px, transparent 1px);
+  background: linear-gradient(rgba(16,37,53,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(16,37,53,.035) 1px, transparent 1px);
   background-size: 28px 28px;
   mask-image: linear-gradient(to bottom, black, transparent 88%);
 }
-.tool-tabs { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(4,1fr); border-bottom: 1px solid var(--line); background: rgba(247,243,237,.84); }
-.tool-tab { position: relative; min-width: 0; min-height: 66px; padding: 13px 14px 11px; border: 0; border-right: 1px solid var(--line); background: transparent; color: var(--ink-mute); text-align: left; cursor: pointer; transition: background 180ms ease,color 180ms ease; }
+.tool-tabs { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(5,1fr); border-bottom: 1px solid var(--line); background: rgba(235,241,244,.88); }
+.tool-tab { position: relative; min-width: 0; min-height: 66px; padding: 13px 9px 11px; border: 0; border-right: 1px solid var(--line); background: transparent; color: var(--ink-mute); text-align: left; cursor: pointer; transition: background 180ms ease,color 180ms ease; }
 .tool-tab:last-child { border-right: 0; }
-.tool-tab span { display: block; overflow: hidden; font-size: 8px; font-weight: 600; letter-spacing: .09em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
-.tool-tab strong { display: block; margin-top: 4px; overflow: hidden; font-family: var(--display); font-size: clamp(15px,1.35vw,20px); font-weight: 400; line-height: 1.05; text-overflow: ellipsis; white-space: nowrap; }
+.tool-tab span { display: block; overflow: hidden; font-size: 9px; font-weight: 600; letter-spacing: .07em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.tool-tab strong { display: block; margin-top: 4px; overflow: hidden; font-family: var(--display); font-size: clamp(13px,1vw,15px); font-weight: 400; line-height: 1.05; text-overflow: ellipsis; white-space: nowrap; }
 .tool-tab::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -1px; height: 3px; background: var(--tool-color,var(--accent)); }
 .tool-tab:hover { color: var(--ink); }
 .tool-tab:focus-visible { z-index: 2; outline: 2px solid var(--ink); outline-offset: -3px; }
@@ -34,9 +34,9 @@
 .tool-stage { position: relative; aspect-ratio: 1.86; min-height: 290px; }
 .tool-animation-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .tool-copy { position: absolute; z-index: 4; left: 22px; right: 22px; bottom: 17px; display: flex; align-items: end; justify-content: space-between; gap: 24px; pointer-events: none; }
-.tool-copy small { display: block; color: var(--tool-color,var(--accent)); font: 700 8px/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.tool-copy small { display: block; color: var(--tool-color,var(--accent)); font: 700 10px/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
 .tool-copy strong { display: block; max-width: 410px; margin-top: 5px; font-family: var(--display); font-size: clamp(20px,2vw,31px); font-weight: 400; line-height: 1.02; }
-.tool-phase { max-width: 200px; color: var(--ink-mute); font-size: 8px; line-height: 1.45; text-align: right; }
+.tool-phase { max-width: 220px; color: var(--ink-mute); font-size: 10px; line-height: 1.45; text-align: right; }
 @keyframes toolTabProgress { from { right:100%; } to { right:0; } }
 
 @media (max-width:1080px) {
@@ -49,10 +49,10 @@
 }
 @media (max-width:600px) {
   .hero-tools { width:100%; }
-  .tool-tab { min-height:58px; padding:10px 8px; }
-  .tool-tab span { font-size:7px; }
-  .tool-tab strong { font-size:13px; }
-  .tool-stage { aspect-ratio:.98; min-height:0; }
+  .tool-tab { min-height:58px; padding:10px 4px; }
+  .tool-tab span { font-size:7.5px; }
+  .tool-tab strong { font-size:11.5px; }
+  .tool-stage { aspect-ratio:1.18; min-height:0; }
   .tool-copy { left:15px; right:15px; bottom:13px; align-items:start; flex-direction:column; gap:5px; }
   .tool-copy strong { max-width:300px; font-size:22px; }
   .tool-phase { max-width:none; text-align:left; }

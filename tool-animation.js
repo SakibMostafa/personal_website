@@ -14,22 +14,27 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const tools = {
     dynomap: {
-      color: '#9b4d3f', kicker: 'Dynomap',
+      color: '#2e5cb8', kicker: 'Dynomap',
       headline: 'Tables learn their own spatial organization.',
       phase: 'Features move · neighborhoods emerge · attributions return to biology'
     },
     graph: {
-      color: '#337f82', kicker: 'Graph2Image',
+      color: '#147b78', kicker: 'Graph2Image',
       headline: 'Large biological networks become inspectable images.',
       phase: 'Topology is encoded · image channels form · node evidence remains visible'
     },
     foundation: {
-      color: '#17304b', kicker: 'Graph Foundation Model',
+      color: '#173d59', kicker: 'Graph Foundation Model',
       headline: 'One structural language transfers across unseen graphs.',
       phase: 'Node roles are described · text and graph streams align · zero-shot transfer follows'
     },
+    gig: {
+      color: '#6955a5', kicker: 'Graph-in-Graph',
+      headline: 'Each patient becomes a pathway-structured graph.',
+      phase: 'Expression personalizes nodes · pathways preserve biology · predictions remain traceable'
+    },
     cell: {
-      color: '#b98636', kicker: 'scVision',
+      color: '#b87d24', kicker: 'scVision',
       headline: 'Single cells become reusable visual representations.',
       phase: 'Genes are mapped · cells are rendered · a foundation representation is learned'
     }
@@ -52,7 +57,7 @@
   };
   const label = (text, x, y, align = 'left') => {
     ctx.fillStyle = '#728087';
-    ctx.font = '600 9px "DM Sans", sans-serif';
+    ctx.font = '600 10px "DM Sans", sans-serif';
     ctx.textAlign = align;
     ctx.fillText(text.toUpperCase(), x, y);
   };
@@ -98,7 +103,7 @@
   };
 
   const drawDynomap = (progress, w, h) => {
-    const red = '#9b4d3f', teal = '#337f82', gold = '#b98636', navy = '#17304b';
+    const red = '#2e5cb8', teal = '#147b78', gold = '#b87d24', navy = '#173d59';
     label('Unordered table', w*.075, h*.13);
     const ox = w*.075, oy = h*.18, size = Math.min(22, w*.027);
     const colors = ['#ddd8cf','#d7e4df','#e9c6b8','#dec489'];
@@ -128,14 +133,14 @@
       points.forEach((point,i) => {
         if(i>0) line(point.x,point.y,points[(i*5+3)%points.length].x,points[(i*5+3)%points.length].y,rgba(center.color,.28));
       });
-      points.forEach((point,i) => circle(point.x,point.y,i%5===0?4.5:2.1,rgba(center.color,.88),'#fffdf9',1));
+      points.forEach((point,i) => circle(point.x,point.y,i%5===0?4.5:2.1,rgba(center.color,.88),'#ffffff',1));
     });
     line(centers[0].x,centers[0].y,centers[1].x,centers[1].y,rgba(navy,.52),2);
     line(centers[1].x,centers[1].y,centers[2].x,centers[2].y,rgba(navy,.52),2);
   };
 
   const drawGraph2Image = (progress, w, h) => {
-    const teal='#337f82', gold='#b98636', navy='#17304b';
+    const teal='#147b78', gold='#b87d24', navy='#173d59';
     label('Biological network',w*.065,h*.13);
     const points=[];
     for(let i=0;i<12;i+=1) {
@@ -146,7 +151,7 @@
       line(point.x,point.y,points[(i*5+2)%points.length].x,points[(i*5+2)%points.length].y,rgba(navy,.28));
       if(i%2===0) line(point.x,point.y,points[(i+1)%points.length].x,points[(i+1)%points.length].y,rgba(teal,.42));
     });
-    points.forEach((point,i)=>circle(point.x,point.y,i%4===0?4.5:2.7,i%3===0?gold:teal,'#fffdf9',1));
+    points.forEach((point,i)=>circle(point.x,point.y,i%4===0?4.5:2.7,i%3===0?gold:teal,'#ffffff',1));
     flowParticles(progress,teal,w,h,8);
     label('Feature · edge · structure channels',w*.63,h*.13);
     for(let layer=2;layer>=0;layer-=1) {
@@ -165,7 +170,7 @@
   };
 
   const drawFoundation = (progress, w, h) => {
-    const navy='#17304b',teal='#337f82',gold='#b98636',red='#9b4d3f',paper='#fffdf9';
+    const navy='#173d59',teal='#147b78',gold='#b87d24',red='#2e5cb8',paper='#ffffff';
     label('9 source graphs',w*.055,h*.13);
     label('Shared topology',w*.5,h*.13,'center');
     label('Unseen protein network',w*.69,h*.13);
@@ -248,7 +253,7 @@
   };
 
   const drawScVision = (progress, w, h) => {
-    const gold='#b98636',teal='#337f82',red='#9b4d3f',navy='#17304b';
+    const gold='#b87d24',teal='#147b78',red='#2e5cb8',navy='#173d59';
     label('Single-cell expression',w*.065,h*.13);
     const baseX=w*.07,baseY=h*.64;
     for(let i=0;i<12;i+=1) {
@@ -282,6 +287,87 @@
     }
   };
 
+  const drawGiG = (progress, w, h) => {
+    const purple='#6955a5',teal='#147b78',gold='#b87d24',blue='#2e5cb8',navy='#173d59',paper='#ffffff';
+    const compact=w<460;
+    label(compact?'Patient data':'Patient expression',w*.055,h*.13);
+    label(compact?'Patient graphs':'Pathway-structured patient graphs',compact?w*.5:w*.48,h*.13,'center');
+    label(compact?'Prediction':'Clinical prediction',compact?w*.78:w*.79,h*.13);
+
+    const patients=[
+      {y:h*.25,color:teal,values:[.35,.72,.46,.86,.27,.61,.43,.78]},
+      {y:h*.42,color:purple,values:[.66,.31,.83,.49,.73,.38,.58,.25]},
+      {y:h*.59,color:gold,values:[.42,.81,.29,.63,.88,.47,.34,.69]}
+    ];
+    const cardX=w*.055,cardW=Math.max(92,w*.17),cardH=Math.max(34,h*.105);
+    const graphCenters=[];
+
+    patients.forEach((patient,index) => {
+      ctx.fillStyle='rgba(255,255,255,.82)';ctx.strokeStyle=rgba(navy,.14);ctx.lineWidth=1;
+      ctx.beginPath();ctx.roundRect(cardX,patient.y-cardH/2,cardW,cardH,7);ctx.fill();ctx.stroke();
+      patient.values.forEach((value,i) => {
+        const barW=(cardW-26)/patient.values.length;
+        const barH=6+value*(cardH-15);
+        ctx.fillStyle=i%3===index%3?rgba(patient.color,.78):rgba(navy,.13);
+        ctx.fillRect(cardX+10+i*barW,patient.y+cardH/2-7-barH,Math.max(3,barW-3),barH);
+      });
+      ctx.fillStyle=rgba(navy,.62);ctx.font='600 7px "DM Sans", sans-serif';ctx.textAlign='left';
+      ctx.fillText(`P${index+1}`,cardX+cardW+7,patient.y+2);
+      graphCenters.push({x:w*.48,y:patient.y,color:patient.color,index});
+    });
+
+    const cohortX=w*.32,cohortY=h*.17,cohortW=w*.31,cohortH=h*.49;
+    ctx.fillStyle=rgba(purple,.035);ctx.strokeStyle=rgba(purple,.22);ctx.lineWidth=1;
+    ctx.beginPath();ctx.roundRect(cohortX,cohortY,cohortW,cohortH,12);ctx.fill();ctx.stroke();
+    ctx.fillStyle=rgba(purple,.7);ctx.font='600 7px "DM Sans", sans-serif';ctx.textAlign='right';
+    ctx.fillText(compact?'PATIENT GRAPHS':'ONE GRAPH PER PATIENT',cohortX+cohortW-10,cohortY+15);
+
+    graphCenters.forEach((center,index) => {
+      const a={x:cardX+cardW+18,y:patients[index].y};
+      const b={x:w*.285,y:patients[index].y};
+      const c={x:w*.33,y:center.y};
+      const d={x:center.x-37,y:center.y};
+      ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.bezierCurveTo(b.x,b.y,c.x,c.y,d.x,d.y);
+      ctx.strokeStyle=rgba(center.color,.24);ctx.lineWidth=1;ctx.stroke();
+      const particle=bezierPoint((progress+index*.22)%1,a,b,c,d);
+      circle(particle.x,particle.y,2.7,center.color,paper,.8);
+
+      const nodes=[];
+      for(let i=0;i<8;i+=1) {
+        const angle=(Math.PI*2*i)/8+index*.23;
+        const radius=i%2===0?27:18;
+        nodes.push({x:center.x+Math.cos(angle)*radius,y:center.y+Math.sin(angle)*radius*.55});
+      }
+      [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,0],[0,4],[2,6],[1,5]].forEach((edge,edgeIndex)=>{
+        const source=nodes[edge[0]],target=nodes[edge[1]];
+        line(source.x,source.y,target.x,target.y,edgeIndex===8+index?rgba(center.color,.8):rgba(navy,.22),edgeIndex===8+index?2:1);
+      });
+      nodes.forEach((node,i)=>circle(node.x,node.y,i===index+1?4:2.4,i===index+1?center.color:rgba(center.color,.72),paper,.8));
+    });
+
+    const outcomeX=w*.73,outcomeY=h*.23,outcomeW=w*.21,outcomeH=h*.34;
+    ctx.fillStyle='rgba(255,255,255,.9)';ctx.strokeStyle=rgba(navy,.16);ctx.lineWidth=1;
+    ctx.beginPath();ctx.roundRect(outcomeX,outcomeY,outcomeW,outcomeH,10);ctx.fill();ctx.stroke();
+    graphCenters.forEach((center,index) => {
+      const start={x:cohortX+cohortW,y:center.y};
+      const control1={x:w*.67,y:center.y};
+      const control2={x:w*.68,y:outcomeY+outcomeH*.5};
+      const end={x:outcomeX,y:outcomeY+outcomeH*.5};
+      ctx.beginPath();ctx.moveTo(start.x,start.y);ctx.bezierCurveTo(control1.x,control1.y,control2.x,control2.y,end.x,end.y);
+      ctx.strokeStyle=rgba(center.color,.18);ctx.lineWidth=1;ctx.stroke();
+      const point=bezierPoint((progress+index*.3)%1,start,control1,control2,end);
+      circle(point.x,point.y,2.6,center.color,paper,.8);
+    });
+    ctx.fillStyle=navy;ctx.font='600 8px "DM Sans", sans-serif';ctx.textAlign='left';ctx.fillText(compact?'RISK':'DISEASE PROBABILITY',outcomeX+13,outcomeY+20);
+    const gaugeX=outcomeX+13,gaugeY=outcomeY+39,gaugeW=outcomeW-26;
+    ctx.fillStyle=rgba(navy,.1);ctx.beginPath();ctx.roundRect(gaugeX,gaugeY,gaugeW,8,4);ctx.fill();
+    const fill=.64+.12*Math.sin(progress*Math.PI*2);
+    ctx.fillStyle=purple;ctx.beginPath();ctx.roundRect(gaugeX,gaugeY,gaugeW*fill,8,4);ctx.fill();
+    ctx.fillStyle=purple;ctx.font='600 18px "DM Sans", sans-serif';ctx.fillText(`${Math.round(fill*100)}%`,gaugeX,gaugeY+34);
+    ctx.fillStyle=rgba(navy,.62);ctx.font='600 7px "DM Sans", sans-serif';ctx.fillText(compact?'PATHWAY':'TOP PATHWAY',gaugeX,gaugeY+54);
+    ctx.fillStyle=teal;ctx.font=`600 ${compact?8:9}px "DM Sans", sans-serif`;ctx.fillText(compact?'IMMUNE':'IMMUNE SIGNALING',gaugeX,gaugeY+68);
+  };
+
   const draw = (time) => {
     const box=canvas.getBoundingClientRect(),w=box.width,h=box.height;
     const progress=reduceMotion ? .86 : ((time-started)%5000)/5000;
@@ -289,6 +375,7 @@
     if(active==='dynomap') drawDynomap(progress,w,h);
     else if(active==='graph') drawGraph2Image(progress,w,h);
     else if(active==='foundation') drawFoundation(progress,w,h);
+    else if(active==='gig') drawGiG(progress,w,h);
     else drawScVision(progress,w,h);
     window.requestAnimationFrame(draw);
   };

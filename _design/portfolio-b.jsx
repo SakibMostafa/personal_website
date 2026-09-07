@@ -243,7 +243,7 @@ function BHome() {
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
           <div>
             <div className="b-label">Featured</div>
-            <h2 style={{ marginTop: 8, fontSize: 32, letterSpacing: "-0.025em" }}>Three manuscripts at Nature-family journals.</h2>
+            <h2 style={{ marginTop: 8, fontSize: 32, letterSpacing: "-0.025em" }}>Five current manuscripts targeting Nature-family journals.</h2>
           </div>
           <a className="b-link b-mono" style={{ fontSize: 12, letterSpacing: "0.08em" }}>SEE ALL RESEARCH →</a>
         </div>
@@ -453,7 +453,7 @@ function BTeaching() {
 
         {/* Mentoring column */}
         <div>
-          <div className="b-label">Mentoring · 07 trainees</div>
+          <div className="b-label">Mentoring · 11 trainees</div>
           <div style={{ marginTop: 16, padding: "20px 22px", border: `2px solid ${bTokens.ink}`, background: bTokens.panel }}>
             <div style={{ display: "grid", gap: 14 }}>
               {CV.teaching.mentoring.map((m, i) => (
@@ -611,7 +611,7 @@ function BCV() {
             <div style={{ marginTop: 14, display: "grid", gap: 12 }}>
               {CV.media.map((m, i) => (
                 <div key={i} style={{ paddingBottom: 12, borderBottom: i < CV.media.length - 1 ? `1px solid ${bTokens.line}` : "none" }}>
-                  <h4 style={{ fontSize: 13.5, lineHeight: 1.4 }}>{m.headline}</h4>
+                  <h4 style={{ fontSize: 13.5, lineHeight: 1.4 }}><a href={m.url} target="_blank" rel="noopener noreferrer">{m.headline}</a></h4>
                   <div style={{ marginTop: 4, fontSize: 11.5, color: bTokens.inkMute }} className="b-mono">{m.outlet.toUpperCase()} · {m.year}</div>
                 </div>
               ))}

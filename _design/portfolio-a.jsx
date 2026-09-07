@@ -558,7 +558,7 @@ function ACV() {
         <div style={{ display: "grid", gap: 10 }}>
           {CV.media.map((m, i) =>
           <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 220px 100px", gap: 16, fontSize: 13.5 }}>
-              <div style={{ color: aTokens.ink }}>{m.headline}</div>
+              <div style={{ color: aTokens.ink }}><a href={m.url} target="_blank" rel="noopener noreferrer">{m.headline}</a></div>
               <div style={{ color: aTokens.inkSoft, fontStyle: "italic" }}>{m.outlet}</div>
               <div style={{ color: aTokens.inkMute, textAlign: "right" }}>{m.year}</div>
             </div>

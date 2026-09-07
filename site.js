@@ -66,6 +66,31 @@
     counters.forEach((counter) => countObserver.observe(counter));
   }
 
+  const sectionNavLinks = [...document.querySelectorAll('.nav-link[href^="#"]')];
+  if (sectionNavLinks.length && 'IntersectionObserver' in window) {
+    const sectionLinkMap = new Map(
+      sectionNavLinks.map((link) => [document.querySelector(link.getAttribute('href')), link]).filter(([section]) => section)
+    );
+    const visibleSections = new Map();
+    const setCurrentSection = () => {
+      const current = [...visibleSections.entries()]
+        .filter(([, visible]) => visible)
+        .map(([section]) => section)
+        .sort((a, b) => Math.abs(a.getBoundingClientRect().top - 120) - Math.abs(b.getBoundingClientRect().top - 120))[0];
+      sectionNavLinks.forEach((link) => {
+        const isCurrent = sectionLinkMap.get(current) === link;
+        link.classList.toggle('is-active', isCurrent);
+        if (isCurrent) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    };
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => visibleSections.set(entry.target, entry.isIntersecting));
+      setCurrentSection();
+    }, { rootMargin: '-15% 0px -68% 0px', threshold: 0 });
+    sectionLinkMap.forEach((link, section) => sectionObserver.observe(section));
+  }
+
   const projectCarousel = document.querySelector('[data-project-carousel]');
   if (projectCarousel) {
     const viewport = projectCarousel.querySelector('[data-carousel-viewport]');
@@ -241,7 +266,6 @@
                 ['Joseph Liao', 'Urology'],
                 ['Ridvan Yesiloglu', 'scVision collaborator'],
                 ['Yuming Jiang', 'Dynomap collaborator'],
-                ['Yuwei Xue', 'Knowledge-graph learning collaborator'],
                 ['Ariana Rahman', 'GenoIntig collaborator']
               ]
             },
