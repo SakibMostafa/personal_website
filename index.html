@@ -17,9 +17,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=DM+Serif+Display&amp;display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260814-1">
+  <link rel="stylesheet" href="styles.css?v=20260907-1">
   <link rel="stylesheet" href="tool-animation.css?v=20260814-1">
-  <script src="site.js?v=20260811-3" defer></script>
+  <script src="site.js?v=20260907-1" defer></script>
   <script src="tool-animation.js?v=20260814-1" defer></script>
 </head>
 <body>
@@ -86,9 +86,9 @@
 
       <div class="stats stats--hero reveal" aria-label="Research at a glance">
         <div class="stat">
-          <div class="stat-value" data-count="4">4</div>
+          <div class="stat-value" data-count="6">6</div>
           <div class="stat-label">Open research platforms</div>
-          <div class="stat-note">Dynomap · Graph2Image · GFM · scVision</div>
+          <div class="stat-note">Cartography · graph AI · single-cell models</div>
         </div>
         <div class="stat">
           <div class="stat-value" data-count="4">4</div>
@@ -114,11 +114,17 @@
           <div class="a-section-label">Open research</div>
           <h2>From difficult data to inspectable maps.</h2>
         </div>
-        <p>Four connected projects explore the same central idea at different biological scales: representation is not a formatting detail—it can be the mechanism that makes learning and interpretation possible.</p>
+        <p>Six connected projects explore the same central idea at different biological scales: representation is not a formatting detail—it can be the mechanism that makes learning and interpretation possible.</p>
       </div>
 
-      <div class="project-grid">
-        <article class="project-card project-card--dynomap reveal">
+      <div class="project-carousel reveal" data-project-carousel aria-roledescription="carousel" aria-label="Open research projects">
+        <button class="project-carousel-arrow project-carousel-arrow--prev" type="button" data-carousel-prev aria-label="Show previous project">
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <div class="project-viewport" data-carousel-viewport tabindex="0">
+          <div class="project-track">
+        <article class="project-card project-card--dynomap" data-project-name="Dynomap">
           <a class="project-card-hit" href="https://islamlab.org/dynomap/" target="_blank" rel="noopener noreferrer" aria-label="Open the Dynomap project"></a>
           <div class="project-visual project-cover-frame project-cover-frame--dynomap">
             <img src="assets/dynomap-cover.png" alt="Dynomap project cover.">
@@ -133,7 +139,7 @@
           </div>
         </article>
 
-        <article class="project-card project-card--graph reveal">
+        <article class="project-card project-card--graph" data-project-name="Graph2Image">
           <a class="project-card-hit" href="https://islamlab.org/graph2image/" target="_blank" rel="noopener noreferrer" aria-label="Open the Graph2Image project"></a>
           <div class="project-visual project-cover-frame project-cover-frame--graph">
             <img src="assets/graph2image-cover.png" alt="Graph2Image project cover showing a biological graph mapped into feature and structure image channels.">
@@ -148,7 +154,7 @@
           </div>
         </article>
 
-        <article class="project-card project-card--foundation reveal">
+        <article class="project-card project-card--foundation" data-project-name="Graph Foundation Model">
           <a class="project-card-hit" href="https://islamlab.org/graph-foundation-model/" target="_blank" rel="noopener noreferrer" aria-label="Open the Graph Foundation Model project"></a>
           <div class="project-visual project-cover-frame project-cover-frame--foundation">
             <img src="assets/gfm-cover.jpg" alt="Graph Foundation Model cover showing structural knowledge transferring from a graph to an unseen task.">
@@ -163,7 +169,22 @@
           </div>
         </article>
 
-        <article class="project-card project-card--scvision reveal">
+        <article class="project-card project-card--gig" data-project-name="Graph-in-Graph">
+          <a class="project-card-hit" href="https://islamlab.org/gig/" target="_blank" rel="noopener noreferrer" aria-label="Open the Graph-in-Graph project"></a>
+          <div class="project-visual project-cover-frame project-cover-frame--gig">
+            <img src="assets/gig-cover.png" alt="Graph-in-Graph project cover showing a patient transcriptome becoming a pathway-structured molecular graph.">
+          </div>
+          <div class="project-kicker">Collaborative work · Knowledge-guided graph learning</div>
+          <h3>Graph-in-Graph</h3>
+          <p>Builds one pathway-structured molecular graph per patient, combining curated gene relationships with patient-specific expression for data-efficient clinical prediction.</p>
+          <div class="project-metric"><strong>+49 points</strong><span>macro-F1 improvement on the most challenging prostate-cancer task</span></div>
+          <div class="project-links">
+            <a href="https://islamlab.org/gig/" target="_blank" rel="noopener noreferrer">Visit project <span aria-hidden="true">↗</span></a>
+            <a href="https://arxiv.org/abs/2605.24162" target="_blank" rel="noopener noreferrer">Preprint</a>
+          </div>
+        </article>
+
+        <article class="project-card project-card--scvision" data-project-name="scVision">
           <a class="project-card-hit" href="https://islamlab.org/scvision/" target="_blank" rel="noopener noreferrer" aria-label="Open the scVision project"></a>
           <div class="project-visual project-cover-frame project-cover-frame--scvision">
             <img src="assets/scvision-cover.png" alt="scVision project cover.">
@@ -177,6 +198,33 @@
             <a href="https://arxiv.org/abs/2607.14163" target="_blank" rel="noopener noreferrer">Preprint</a>
           </div>
         </article>
+
+        <article class="project-card project-card--bioglyph" data-project-name="BioGlyph">
+          <a class="project-card-hit" href="https://islamlab.org/bioglyph/" target="_blank" rel="noopener noreferrer" aria-label="Open the BioGlyph project"></a>
+          <div class="project-visual project-cover-frame project-cover-frame--bioglyph">
+            <img src="assets/bioglyph-cover.jpg" alt="BioGlyph project cover introducing a readable structural language for biological networks.">
+          </div>
+          <div class="project-kicker">In development · Structural language</div>
+          <h3>BioGlyph</h3>
+          <p>Compiles a graph into named structural roles, measured evidence, and counterfactual descriptions so a frozen language model can reason about topology.</p>
+          <div class="project-metric"><strong>In development</strong><span>manuscript in preparation · deterministic, interpretable graph-to-language reasoning</span></div>
+          <div class="project-links">
+            <a href="https://islamlab.org/bioglyph/" target="_blank" rel="noopener noreferrer">Visit project <span aria-hidden="true">↗</span></a>
+            <span class="project-status">Manuscript in preparation</span>
+          </div>
+        </article>
+          </div>
+        </div>
+
+        <button class="project-carousel-arrow project-carousel-arrow--next" type="button" data-carousel-next aria-label="Show next project">
+          <span aria-hidden="true">→</span>
+        </button>
+
+        <div class="project-carousel-footer">
+          <div class="project-dots" data-carousel-dots aria-label="Choose a project"></div>
+          <button class="project-carousel-toggle" type="button" data-carousel-toggle aria-pressed="false">Pause rotation</button>
+        </div>
+        <p class="sr-only" data-carousel-status aria-live="polite"></p>
       </div>
     </section>
 

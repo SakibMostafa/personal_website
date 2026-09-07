@@ -66,6 +66,142 @@
     counters.forEach((counter) => countObserver.observe(counter));
   }
 
+  const projectCarousel = document.querySelector('[data-project-carousel]');
+  if (projectCarousel) {
+    const viewport = projectCarousel.querySelector('[data-carousel-viewport]');
+    const track = projectCarousel.querySelector('.project-track');
+    const cards = [...projectCarousel.querySelectorAll('.project-card')];
+    const previous = projectCarousel.querySelector('[data-carousel-prev]');
+    const next = projectCarousel.querySelector('[data-carousel-next]');
+    const dots = projectCarousel.querySelector('[data-carousel-dots]');
+    const toggle = projectCarousel.querySelector('[data-carousel-toggle]');
+    const status = projectCarousel.querySelector('[data-carousel-status]');
+    let activeIndex = 0;
+    let lastStartIndex = cards.length - 1;
+    let userPaused = false;
+    let pointerInside = false;
+    let focusInside = false;
+    let carouselVisible = true;
+    let scrollFrame = 0;
+
+    cards.forEach((card, index) => {
+      card.setAttribute('role', 'group');
+      card.setAttribute('aria-roledescription', 'slide');
+      card.setAttribute('aria-label', `${index + 1} of ${cards.length}: ${card.dataset.projectName}`);
+    });
+
+    const cardOffset = (index) => Math.min(cards[index].offsetLeft, viewport.scrollWidth - viewport.clientWidth);
+
+    const announce = (index) => {
+      status.textContent = `Showing ${cards[index].dataset.projectName}, project ${index + 1} of ${cards.length}.`;
+    };
+
+    const updateControls = (announceChange = false) => {
+      [...dots.children].forEach((dot, index) => {
+        if (index === activeIndex) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+      if (announceChange) announce(activeIndex);
+    };
+
+    const goTo = (index, announceChange = true) => {
+      activeIndex = Math.max(0, Math.min(index, lastStartIndex));
+      viewport.scrollTo({ left: cardOffset(activeIndex), behavior: reduceMotion ? 'auto' : 'smooth' });
+      updateControls(announceChange);
+    };
+
+    const rebuildPagination = () => {
+      const firstCard = cards[0];
+      if (!firstCard) return;
+      const trackStyle = window.getComputedStyle(track);
+      const gap = parseFloat(trackStyle.columnGap || trackStyle.gap) || 0;
+      const visibleCards = Math.max(1, Math.round((viewport.clientWidth + gap) / (firstCard.getBoundingClientRect().width + gap)));
+      lastStartIndex = Math.max(0, cards.length - visibleCards);
+      activeIndex = Math.min(activeIndex, lastStartIndex);
+      dots.replaceChildren();
+      for (let index = 0; index <= lastStartIndex; index += 1) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'project-dot';
+        dot.setAttribute('aria-label', `Show projects beginning with ${cards[index].dataset.projectName}`);
+        dot.addEventListener('click', () => goTo(index));
+        dots.append(dot);
+      }
+      viewport.scrollTo({ left: cardOffset(activeIndex), behavior: 'auto' });
+      updateControls();
+    };
+
+    const step = (direction) => {
+      const target = direction > 0
+        ? (activeIndex >= lastStartIndex ? 0 : activeIndex + 1)
+        : (activeIndex <= 0 ? lastStartIndex : activeIndex - 1);
+      goTo(target);
+    };
+
+    previous.addEventListener('click', () => step(-1));
+    next.addEventListener('click', () => step(1));
+    viewport.addEventListener('keydown', (event) => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      step(event.key === 'ArrowRight' ? 1 : -1);
+    });
+    viewport.addEventListener('scroll', () => {
+      if (scrollFrame) cancelAnimationFrame(scrollFrame);
+      scrollFrame = requestAnimationFrame(() => {
+        let closest = 0;
+        let distance = Number.POSITIVE_INFINITY;
+        for (let index = 0; index <= lastStartIndex; index += 1) {
+          const candidate = Math.abs(viewport.scrollLeft - cardOffset(index));
+          if (candidate < distance) {
+            closest = index;
+            distance = candidate;
+          }
+        }
+        if (closest !== activeIndex) {
+          activeIndex = closest;
+          updateControls();
+        }
+      });
+    }, { passive: true });
+
+    projectCarousel.addEventListener('pointerenter', () => { pointerInside = true; });
+    projectCarousel.addEventListener('pointerleave', () => { pointerInside = false; });
+    projectCarousel.addEventListener('focusin', () => { focusInside = true; });
+    projectCarousel.addEventListener('focusout', (event) => {
+      if (!projectCarousel.contains(event.relatedTarget)) focusInside = false;
+    });
+
+    if (reduceMotion) {
+      userPaused = true;
+      toggle.textContent = 'Rotation disabled';
+      toggle.disabled = true;
+    } else {
+      toggle.addEventListener('click', () => {
+        userPaused = !userPaused;
+        toggle.setAttribute('aria-pressed', String(userPaused));
+        toggle.textContent = userPaused ? 'Resume rotation' : 'Pause rotation';
+      });
+      window.setInterval(() => {
+        if (!userPaused && !pointerInside && !focusInside && carouselVisible && !document.hidden) step(1);
+      }, 6500);
+    }
+
+    if ('IntersectionObserver' in window) {
+      const carouselObserver = new IntersectionObserver((entries) => {
+        carouselVisible = entries[0].isIntersecting;
+      }, { threshold: 0.2 });
+      carouselObserver.observe(projectCarousel);
+    }
+
+    if ('ResizeObserver' in window) {
+      const resizeObserver = new ResizeObserver(rebuildPagination);
+      resizeObserver.observe(viewport);
+    } else {
+      window.addEventListener('resize', rebuildPagination, { passive: true });
+    }
+    rebuildPagination();
+  }
+
   const heroMap = document.querySelector('.hero-map');
   if (heroMap && !reduceMotion && window.matchMedia('(pointer: fine)').matches) {
     const moveMap = (event) => {
