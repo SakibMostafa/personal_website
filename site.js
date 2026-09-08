@@ -242,7 +242,7 @@
     const collaboratorTree = {
       id: 'world',
       label: 'All regions',
-      context: 'Selected current and longstanding collaborators',
+      context: 'All collaborators',
       children: [
         {
           id: 'usa',
@@ -406,6 +406,7 @@
     const stage = collaboratorExplorer.querySelector('[data-collab-stage]');
     const lines = collaboratorExplorer.querySelector('[data-collab-lines]');
     const nodes = collaboratorExplorer.querySelector('[data-collab-nodes]');
+    const hub = collaboratorExplorer.querySelector('.collab-hub');
     const context = collaboratorExplorer.querySelector('[data-collab-context]');
     const summary = collaboratorExplorer.querySelector('[data-collab-summary]');
     const detail = collaboratorExplorer.querySelector('[data-collab-detail]');
@@ -447,22 +448,70 @@
       detail.hidden = false;
     };
 
-    const nodePosition = (index, total) => {
-      if (total === 1) return { x: 50, y: 16 };
-      const start = total === 3 ? -90 : -90;
-      const angle = (start + (360 / total) * index) * Math.PI / 180;
-      return {
-        x: 50 + Math.cos(angle) * 35,
-        y: 48 + Math.sin(angle) * 35
+    const positionNodes = () => {
+      const buttons = [...nodes.querySelectorAll('.collab-map-node')];
+      if (!buttons.length || window.matchMedia('(max-width: 700px)').matches) return;
+
+      const stageWidth = stage.clientWidth;
+      const stageHeight = stage.clientHeight;
+      const compact = collaboratorExplorer.classList.contains('collab-explorer--compact');
+      const edgeX = compact ? 22 : 28;
+      const edgeY = compact ? 20 : 24;
+      const angles = buttons.map((_, index) => (-90 + (360 / buttons.length) * index) * Math.PI / 180);
+      const nodeSizes = buttons.map((button) => ({ width: button.offsetWidth, height: button.offsetHeight }));
+      const hubSize = { width: hub.offsetWidth, height: hub.offsetHeight };
+
+      const boundaryDistance = (size, cosine, sine) => Math.min(
+        Math.abs(cosine) > 0.0001 ? size.width / 2 / Math.abs(cosine) : Number.POSITIVE_INFINITY,
+        Math.abs(sine) > 0.0001 ? size.height / 2 / Math.abs(sine) : Number.POSITIVE_INFINITY
+      );
+
+      const geometryForArm = (armLength) => {
+        const points = angles.map((angle, index) => {
+          const cosine = Math.cos(angle);
+          const sine = Math.sin(angle);
+          const radius = boundaryDistance(hubSize, cosine, sine)
+            + boundaryDistance(nodeSizes[index], cosine, sine)
+            + armLength;
+          return { x: cosine * radius, y: sine * radius };
+        });
+        const minX = Math.min(-hubSize.width / 2, ...points.map((point, index) => point.x - nodeSizes[index].width / 2));
+        const maxX = Math.max(hubSize.width / 2, ...points.map((point, index) => point.x + nodeSizes[index].width / 2));
+        const minY = Math.min(-hubSize.height / 2, ...points.map((point, index) => point.y - nodeSizes[index].height / 2));
+        const maxY = Math.max(hubSize.height / 2, ...points.map((point, index) => point.y + nodeSizes[index].height / 2));
+        return { points, minX, maxX, minY, maxY };
       };
+
+      let lowerArm = 0;
+      let upperArm = compact ? 220 : 260;
+      for (let iteration = 0; iteration < 24; iteration += 1) {
+        const candidateArm = (lowerArm + upperArm) / 2;
+        const candidate = geometryForArm(candidateArm);
+        const fitsWidth = candidate.maxX - candidate.minX <= stageWidth - edgeX * 2;
+        const fitsHeight = candidate.maxY - candidate.minY <= stageHeight - edgeY * 2;
+        if (fitsWidth && fitsHeight) lowerArm = candidateArm;
+        else upperArm = candidateArm;
+      }
+
+      const layout = geometryForArm(lowerArm);
+      const originX = stageWidth / 2 - (layout.minX + layout.maxX) / 2;
+      const originY = stageHeight / 2 - (layout.minY + layout.maxY) / 2;
+
+      hub.style.left = `${originX}px`;
+      hub.style.top = `${originY}px`;
+      buttons.forEach((button, index) => {
+        button.style.left = `${originX + layout.points[index].x}px`;
+        button.style.top = `${originY + layout.points[index].y}px`;
+      });
     };
 
     const drawLines = () => {
       lines.replaceChildren();
       if (window.matchMedia('(max-width: 700px)').matches) return;
       const stageRect = stage.getBoundingClientRect();
-      const originX = stageRect.width * .5;
-      const originY = stageRect.height * .48;
+      const hubRect = hub.getBoundingClientRect();
+      const originX = hubRect.left - stageRect.left + hubRect.width / 2;
+      const originY = hubRect.top - stageRect.top + hubRect.height / 2;
       nodes.querySelectorAll('.collab-map-node').forEach((node) => {
         const nodeRect = node.getBoundingClientRect();
         const targetX = nodeRect.left - stageRect.left + nodeRect.width / 2;
@@ -517,12 +566,9 @@
       window.setTimeout(() => {
         nodes.replaceChildren();
         items.forEach((item, index) => {
-          const position = nodePosition(index, items.length);
           const button = document.createElement('button');
           button.type = 'button';
           button.className = `collab-map-node collab-map-node--${item.children ? 'branch' : 'leaf'}`;
-          button.style.left = `${position.x}%`;
-          button.style.top = `${position.y}%`;
           button.dataset.index = String(index);
           button.setAttribute('aria-label', item.children ? `Open ${item.label}` : `View collaborators in ${item.label}`);
 
@@ -547,6 +593,7 @@
           nodes.append(button);
         });
 
+        positionNodes();
         stage.classList.remove('is-switching');
         window.requestAnimationFrame(drawLines);
       }, reduceMotion ? 0 : 150);
@@ -579,7 +626,16 @@
         render();
       }
     });
-    window.addEventListener('resize', drawLines, { passive: true });
+    window.addEventListener('resize', () => {
+      positionNodes();
+      drawLines();
+    }, { passive: true });
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(() => {
+        positionNodes();
+        drawLines();
+      });
+    }
     render();
   }
 
