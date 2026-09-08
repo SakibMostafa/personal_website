@@ -20,7 +20,6 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css?v=20260908-1">
   <script src="site.js?v=20260908-3" defer></script>
-  <script src="publication-carousel.js?v=20260907-1" defer></script>
 </head>
 <body>
 <div class="a-root page">
@@ -65,122 +64,56 @@
         </div>
       </div>
 
-      <section id="featured-manuscripts" class="paper-showcase" data-paper-carousel aria-labelledby="featured-manuscripts-heading">
-        <div class="paper-showcase-heading">
-          <div>
-            <span class="paper-showcase-kicker">Featured manuscripts</span>
-            <h2 id="featured-manuscripts-heading">Methods designed to make biological structure learnable—and inspectable.</h2>
-          </div>
-          <p>The collection traces one connected research direction: learning useful structure from biomedical tables, networks, and single-cell measurements, then returning model evidence to scientists.</p>
-        </div>
-
-        <div class="paper-carousel-shell">
-          <button class="paper-arrow paper-arrow--previous" type="button" data-paper-previous aria-label="Show previous manuscript">←</button>
-          <div class="paper-stage" data-paper-stage tabindex="0" role="region" aria-roledescription="carousel" aria-label="Featured manuscripts">
-            <article class="paper-slide" data-paper-slide data-paper-name="Dynomap">
-              <a class="paper-sheet" href="https://arxiv.org/abs/2603.22675" target="_blank" rel="noopener noreferrer" aria-label="Read the Dynomap preprint">
-                <div class="paper-sheet-image"><img src="assets/dynomap-cover.png" alt="Dynomap: biomedical tables transformed into learned spatial maps."></div>
-                <div class="paper-sheet-body">
-                  <span>Dynomap · 2026</span>
-                  <h3>Vision-Based Deep Learning of Biomedical Tabular Data via Self-Supervised Cartographic Representation</h3>
-                  <p>Nature Communications · Under review</p>
-                </div>
-              </a>
-            </article>
-            <article class="paper-slide" data-paper-slide data-paper-name="Graph Foundation Model">
-              <a class="paper-sheet" href="https://arxiv.org/abs/2604.06391" target="_blank" rel="noopener noreferrer" aria-label="Read the Graph Foundation Model preprint">
-                <div class="paper-sheet-image"><img src="assets/gfm-cover.jpg" alt="Graph Foundation Model: structural topology transferred across unseen graphs."></div>
-                <div class="paper-sheet-body">
-                  <span>Graph Foundation Model · 2026</span>
-                  <h3>Language-Encoded Structural Topology Enables Generalizable Foundation Models for Graph-Structured Data</h3>
-                  <p>Nature Computational Science · Under review</p>
-                </div>
-              </a>
-            </article>
-            <article class="paper-slide" data-paper-slide data-paper-name="Graph2Image">
-              <a class="paper-sheet" href="https://arxiv.org/abs/2512.07040" target="_blank" rel="noopener noreferrer" aria-label="Read the Graph2Image preprint">
-                <div class="paper-sheet-image"><img src="assets/graph2image-cover.png" alt="Graph2Image: biological networks transformed into image representations."></div>
-                <div class="paper-sheet-body">
-                  <span>Graph2Image · 2026</span>
-                  <h3>Transformation of Biological Networks into Images via Semantic Cartography for Visual Interpretation and Scalable Deep Analysis</h3>
-                  <p>Nature Biomedical Engineering · Under review</p>
-                </div>
-              </a>
-            </article>
-            <article class="paper-slide" data-paper-slide data-paper-name="Graph-in-Graph">
-              <a class="paper-sheet" href="https://arxiv.org/abs/2605.24162" target="_blank" rel="noopener noreferrer" aria-label="Read the Graph-in-Graph preprint">
-                <div class="paper-sheet-image"><img src="assets/gig-cover.png" alt="Graph-in-Graph: patient transcriptomes represented through pathway knowledge graphs."></div>
-                <div class="paper-sheet-body">
-                  <span>Graph-in-Graph · 2026</span>
-                  <h3>Knowledge Graph Modulated Deep Learning for Limited-Sample Clinical Data Analysis</h3>
-                  <p>Nature Biomedical Engineering · Preparing for submission</p>
-                </div>
-              </a>
-            </article>
-            <article class="paper-slide" data-paper-slide data-paper-name="scVision">
-              <a class="paper-sheet" href="https://arxiv.org/abs/2607.14163" target="_blank" rel="noopener noreferrer" aria-label="Read the scVision preprint">
-                <div class="paper-sheet-image"><img src="assets/scvision-cover.png" alt="scVision: a vision foundation model for single-cell biology."></div>
-                <div class="paper-sheet-body">
-                  <span>scVision · 2026</span>
-                  <h3>A Vision Foundation Model for Single-Cell Biology via Spatial Gene Cartography</h3>
-                  <p>Nature · Preparing for submission</p>
-                </div>
-              </a>
-            </article>
-          </div>
-          <button class="paper-arrow paper-arrow--next" type="button" data-paper-next aria-label="Show next manuscript">→</button>
-        </div>
-
-        <div class="paper-showcase-footer">
-          <div class="paper-details" aria-live="polite">
-            <article class="paper-detail" data-paper-detail>
-              <span>Tabular representation learning</span>
-              <h3>Dynomap learns where features belong while learning the prediction task.</h3>
-              <p><strong>Mostafa S</strong>, Jiang Y, Zou J, Massoud TF, Alizadeh AA, Diehn M, Xing L, Islam MT</p>
-              <div class="paper-detail-links"><a href="https://arxiv.org/abs/2603.22675" target="_blank" rel="noopener noreferrer">Read preprint ↗</a><a href="https://islamlab.org/dynomap/" target="_blank" rel="noopener noreferrer">Explore project ↗</a></div>
-            </article>
-            <article class="paper-detail" data-paper-detail>
-              <span>Graph foundation models</span>
-              <h3>Topology becomes a transferable structural language across heterogeneous graphs.</h3>
-              <p><strong>Mostafa S</strong>, Zou J, Alizadeh AA, Diehn M, Xing L, Islam MT</p>
-              <div class="paper-detail-links"><a href="https://arxiv.org/abs/2604.06391" target="_blank" rel="noopener noreferrer">Read preprint ↗</a><a href="https://islamlab.org/graph-foundation-model/" target="_blank" rel="noopener noreferrer">Explore project ↗</a></div>
-            </article>
-            <article class="paper-detail" data-paper-detail>
-              <span>Scalable biological networks</span>
-              <h3>Graph2Image converts very large networks into visual representations with traceable node evidence.</h3>
-              <p><strong>Mostafa S</strong>, Diehn M, Alizadeh AA, Xing L, Islam MT</p>
-              <div class="paper-detail-links"><a href="https://arxiv.org/abs/2512.07040" target="_blank" rel="noopener noreferrer">Read preprint ↗</a><a href="https://islamlab.org/graph2image/" target="_blank" rel="noopener noreferrer">Explore project ↗</a></div>
-            </article>
-            <article class="paper-detail" data-paper-detail>
-              <span>Knowledge-guided clinical learning</span>
-              <h3>Graph-in-Graph organizes patient transcriptomes through biological pathways when cohorts are small.</h3>
-              <p>Xue Y, <strong>Mostafa S</strong>, Zou J, Liao J, Diehn M, Alizadeh AA, Xing L, Islam MT</p>
-              <div class="paper-detail-links"><a href="https://arxiv.org/abs/2605.24162" target="_blank" rel="noopener noreferrer">Read preprint ↗</a><a href="https://islamlab.org/gig/" target="_blank" rel="noopener noreferrer">Explore project ↗</a></div>
-            </article>
-            <article class="paper-detail" data-paper-detail>
-              <span>Single-cell foundation models</span>
-              <h3>scVision learns transferable single-cell representations through spatial gene cartography.</h3>
-              <p>Yesiloglu R, <strong>Mostafa S</strong>, Zou J, Alizadeh A, Wu J, Xing L, Adeli E, Islam MT</p>
-              <div class="paper-detail-links"><a href="https://arxiv.org/abs/2607.14163" target="_blank" rel="noopener noreferrer">Read preprint ↗</a><a href="https://islamlab.org/scvision/" target="_blank" rel="noopener noreferrer">Explore project ↗</a></div>
-            </article>
-          </div>
-          <div class="paper-navigation">
-            <span class="paper-counter" data-paper-counter aria-live="polite">01 / 05</span>
-            <div class="paper-dots" data-paper-dots aria-label="Choose a featured manuscript"></div>
-            <button class="paper-rotation" type="button" data-paper-toggle aria-pressed="false">Pause rotation</button>
-          </div>
-        </div>
-      </section>
-
-      <div class="publication-archive-heading">
-        <div>
-          <span>Scholarly record</span>
-          <h2>Peer-reviewed articles, conference work, and earlier research.</h2>
-        </div>
-        <p>Selected current manuscripts are presented above. The archive below retains a conventional citation-first format for rapid review.</p>
-      </div>
-
       <div class="pub-groups">
+
+        <div>
+          <div class="pub-group-head">
+            <h3>Current Manuscripts &amp; Preprints</h3>
+            <span class="pub-count">5 current works</span>
+          </div>
+          <ol class="pub-list">
+            <li class="pub-item">
+              <div class="pub-num">01</div>
+              <div>
+                <div class="pub-authors"><span class="author-self">Mostafa S</span>, Jiang Y, Zou J, Massoud TF, Alizadeh AA, Diehn M, Xing L, Islam MT</div>
+                <div class="pub-title"><a href="https://arxiv.org/abs/2603.22675" target="_blank" rel="noopener noreferrer" class="a-link-underline">Vision-Based Deep Learning of Biomedical Tabular Data via Self-Supervised Cartographic Representation.</a></div>
+                <div class="pub-meta"><span class="pub-venue">Nature Communications</span><span>· Under review · 2026</span></div>
+              </div>
+            </li>
+            <li class="pub-item">
+              <div class="pub-num">02</div>
+              <div>
+                <div class="pub-authors"><span class="author-self">Mostafa S</span>, Zou J, Alizadeh AA, Diehn M, Xing L, Islam MT</div>
+                <div class="pub-title"><a href="https://arxiv.org/abs/2604.06391" target="_blank" rel="noopener noreferrer" class="a-link-underline">Language-Encoded Structural Topology Enables Generalizable Foundation Models for Graph-Structured Data.</a></div>
+                <div class="pub-meta"><span class="pub-venue">Nature Computational Science</span><span>· Under review · 2026</span></div>
+              </div>
+            </li>
+            <li class="pub-item">
+              <div class="pub-num">03</div>
+              <div>
+                <div class="pub-authors"><span class="author-self">Mostafa S</span>, Diehn M, Alizadeh AA, Xing L, Islam MT</div>
+                <div class="pub-title"><a href="https://arxiv.org/abs/2512.07040" target="_blank" rel="noopener noreferrer" class="a-link-underline">Transformation of Biological Networks into Images via Semantic Cartography for Visual Interpretation and Scalable Deep Analysis.</a></div>
+                <div class="pub-meta"><span class="pub-venue">Nature Biomedical Engineering</span><span>· Under review · 2026</span></div>
+              </div>
+            </li>
+            <li class="pub-item">
+              <div class="pub-num">04</div>
+              <div>
+                <div class="pub-authors">Xue Y*, <span class="author-self">Mostafa S*</span>, Zou J, Liao J, Diehn M, Alizadeh AA, Xing L, Islam MT</div>
+                <div class="pub-title"><a href="https://arxiv.org/abs/2605.24162" target="_blank" rel="noopener noreferrer" class="a-link-underline">Knowledge Graph Modulated Deep Learning for Limited-Sample Clinical Data Analysis.</a></div>
+                <div class="pub-meta"><span class="pub-venue">Nature Biomedical Engineering</span><span>· Preparing for submission · 2026</span><span class="a-tag a-tag--sm">* Equal contribution</span></div>
+              </div>
+            </li>
+            <li class="pub-item">
+              <div class="pub-num">05</div>
+              <div>
+                <div class="pub-authors">Yesiloglu R, <span class="author-self">Mostafa S</span>, Zou J, Alizadeh A, Wu J, Xing L, Adeli E, Islam MT</div>
+                <div class="pub-title"><a href="https://arxiv.org/abs/2607.14163" target="_blank" rel="noopener noreferrer" class="a-link-underline">A Vision Foundation Model for Single-Cell Biology via Spatial Gene Cartography.</a></div>
+                <div class="pub-meta"><span class="pub-venue">Nature</span><span>· Preparing for submission · 2026</span></div>
+              </div>
+            </li>
+          </ol>
+        </div>
 
         <div>
           <div class="pub-group-head">
