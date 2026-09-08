@@ -256,12 +256,12 @@ window.CV = {
     {
       label: "Industry",
       city: "Global",
-      people: ["William Van Der Camp · Google", "Marin Pecar · NRGene", "Raju Soolanayakanahally · AAFC", "Jarin Tasnim · Callian AT"],
+      people: ["William Van Der Camp · Google", "Marin Pecar · NRGene", "Raju Soolanayakanahally · AAFC", "Jarin Tasnim · Calian AT"],
     },
     {
       label: "International",
       city: "Worldwide",
-      people: ["Rajeev Varshney · Murdoch", "Murukarthick Jayakodi · Texas A&M", "Sanu Arora · John Innes Centre", "Laura Botigué · CRAG", "Masud Fahim · Vaasa", "Shangpeng Sun · McGill", "ABM Aowlad Hossain · KUET"],
+      people: ["Rajeev Varshney · Murdoch", "Murukarthick Jayakodi · Texas A&M", "Sanu Arora · John Innes Centre", "Laura Botigué · CRAG", "Masud Fahim · Vaasa", "Shangpeng Sun · McGill", "ABM Aowlad Hossain · KUET", "Taufiq Hasan · Biomedical Engineering, BUET"],
     },
   ],
 

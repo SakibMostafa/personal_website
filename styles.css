@@ -623,6 +623,17 @@ section[id] { scroll-margin-top: 78px; }
 .faculty-profile-item p { max-width: 350px; margin-top: 15px; color: var(--ink-soft); font-size: 12px; line-height: 1.7; }
 .faculty-profile-link { display: inline-block; margin-top: 25px; padding-bottom: 4px; border-bottom: 1px solid var(--line-strong); color: var(--accent) !important; font-size: 12px; font-weight: 700; }
 
+.section--collaborations-home { background: #e9eff2; }
+.collab-explorer--compact { border-radius: 7px; box-shadow: 0 14px 44px rgba(16,37,53,.06); }
+.collab-explorer--compact .collab-explorer-head { min-height: 58px; padding: 11px 16px; background: rgba(255,255,255,.68); }
+.collab-explorer--compact .collab-stage { min-height: 430px; }
+.collab-explorer--compact .collab-map-node { width: 184px; min-height: 102px; padding: 13px 14px; border-radius: 7px; }
+.collab-explorer--compact .collab-map-node strong { font-size: 20px; }
+.collab-explorer--compact .collab-node-action { margin-top: 7px; }
+.collab-explorer--compact .collab-hub { min-width: 156px; padding: 11px 18px; border-radius: 7px; }
+.collab-explorer--compact .collab-detail { right: 16px; bottom: 16px; max-height: 398px; }
+.collab-explorer--compact .collab-legend { min-height: 44px; padding: 10px 16px; }
+
 .section--contact-home { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr); gap: clamp(60px, 10vw, 150px); align-items: end; background: linear-gradient(125deg, #102535, #173d59); color: #f4f7f8; }
 .section--contact-home .a-section-label { color: #84c8c2; }
 .contact-home-copy h2 { max-width: 850px; margin-top: 14px; font-family: var(--display); font-size: clamp(43px, 5.3vw, 74px); font-weight: 500; line-height: 1.02; }
@@ -704,6 +715,10 @@ section[id] { scroll-margin-top: 78px; }
   .collab-detail { position: relative; right: auto; bottom: auto; width: 100%; max-height: none; margin-top: 12px; }
   .collab-legend { align-items: flex-start; flex-direction: column; gap: 7px; }
   .collab-legend span:last-child { margin-left: 0; }
+  .collab-explorer--compact .collab-stage { min-height: 0; }
+  .collab-explorer--compact .collab-map-node,
+  .collab-explorer--compact .collab-map-node:hover,
+  .collab-explorer--compact .collab-map-node:focus-visible { width: 100%; min-height: 96px; }
 }
 
 @media (max-width: 600px) {

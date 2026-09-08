@@ -306,7 +306,7 @@
                 ['Leon Kochian', 'University of Saskatchewan'],
                 ['Julita Vassileva', 'University of Saskatchewan'],
                 ['Amin Elshorbagy', 'University of Saskatchewan'],
-                ['Kiran Panjvani', 'Plant phenotyping collaborator']
+                ['Karim Panjvani', 'Plant phenotyping collaborator']
               ]
             },
             {
@@ -349,7 +349,7 @@
               note: 'Agriculture, translational research, and Canadian technology collaborations.',
               people: [
                 ['Raju Soolanayakanahally', 'Agriculture and Agri-Food Canada'],
-                ['Jarin Tasnim', 'Callian AI']
+                ['Jarin Tasnim', 'Calian AT']
               ]
             }
           ]
@@ -359,6 +359,15 @@
           label: 'International',
           meta: 'Plant genomics and computational biology',
           children: [
+            {
+              id: 'bangladesh',
+              label: 'Bangladesh',
+              place: 'Dhaka, Bangladesh',
+              note: 'Academic collaboration in biomedical engineering and artificial intelligence.',
+              people: [
+                ['Taufiq Hasan', 'Biomedical Engineering · BUET']
+              ]
+            },
             {
               id: 'australia',
               label: 'Australia',
@@ -493,7 +502,11 @@
 
     const render = () => {
       const current = path[path.length - 1];
-      const items = current.children || [];
+      const items = [...(current.children || [])];
+      if (current.id === 'world') {
+        const regionOrder = { canada: 0, usa: 1, international: 2 };
+        items.sort((left, right) => regionOrder[left.id] - regionOrder[right.id]);
+      }
       closeDetail();
       renderBreadcrumb();
       backButton.disabled = path.length === 1;
@@ -569,6 +582,28 @@
     window.addEventListener('resize', drawLines, { passive: true });
     render();
   }
+
+  const scrollToCurrentHash = () => {
+    if (!window.location.hash) return;
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    const root = document.documentElement;
+    const previousBehavior = root.style.scrollBehavior;
+    const nav = document.querySelector('.nav');
+    root.style.scrollBehavior = 'auto';
+    window.scrollTo(0, Math.max(0, target.offsetTop - (nav?.offsetHeight || 0)));
+    window.requestAnimationFrame(() => { root.style.scrollBehavior = previousBehavior; });
+  };
+
+  scrollToCurrentHash();
+  if (document.readyState !== 'complete') {
+    window.addEventListener('load', () => {
+      scrollToCurrentHash();
+      window.setTimeout(scrollToCurrentHash, 180);
+    }, { once: true });
+  }
+  window.addEventListener('hashchange', scrollToCurrentHash);
 
   document.querySelectorAll('a[href^="#"], a[href*="index.html#"]').forEach((link) => {
     link.addEventListener('click', () => {
